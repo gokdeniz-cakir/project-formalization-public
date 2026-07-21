@@ -1,0 +1,12 @@
+# {{PROJECT}} vulnerability experiment
+
+This local repository is a neutral baseline for investigating a bounded C production component with machine-checked formal verification, without disclosing an expected verdict or known vulnerability mechanism.
+
+- Project: `{{PROJECT}}`
+- Version: `{{VERSION}}`
+- Commit: `{{COMMIT}}`
+- Component: `{{COMPONENT}}`
+
+`experiment.yml` records the C claim boundary, safety properties, formal backend, source pin, common agent configuration, and leakage rules. Solver settings, dependency closure, bounds, and replay commands may evolve during investigation, but every arm must use a real formal verifier.
+
+Upstream source is materialized separately and remains untracked. A confirmed production violation requires a machine-checked trace and successful replay against a fresh unmodified pinned build with a useful negative control and checker-sanity test. Inconclusive work may be reported concisely as `unknown`.

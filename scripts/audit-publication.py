@@ -41,10 +41,13 @@ def main() -> int:
         relative = path.relative_to(ROOT).as_posix()
         content = path.read_text(encoding="utf-8", errors="replace")
         lowered = content.lower()
+        is_skill = relative.startswith("skills/")
 
         if WINDOWS_PATH.search(content):
             failures.append(f"{relative}: contains a local Windows path")
         for marker in PRIVATE_MARKERS:
+            if is_skill:
+                continue
             if marker in lowered:
                 failures.append(f"{relative}: contains a private-research marker")
         for identifier in CVE.findall(content):

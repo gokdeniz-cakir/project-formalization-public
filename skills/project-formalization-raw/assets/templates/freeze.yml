@@ -1,0 +1,91 @@
+schema_version: "1.1"
+workflow:
+  # Use production for prospective current-release work, agile for retrospective blindness.
+  profile: "production"
+  soft_time_limit_minutes: 90
+  method_policy: "investigator_discretion"
+  critic_policy: "on_positive_finding"
+freeze:
+  # Confirmation is optional in agile mode. Set true only for an explicit audit freeze.
+  confirmed: false
+  confirmed_at: null
+  confirmed_by: null
+experiment:
+  id: "project-component-mode-01"
+  mode: "prospective"
+  expected_verdict: null
+project:
+  name: "project"
+  upstream_url: "https://example.invalid/project"
+  version: "0.0.0"
+  release_tag: "v0.0.0"
+  commit: "0000000000000000000000000000000000000000"
+  license: "SPDX-identifier-or-description"
+source:
+  # An exact Git commit is sufficient in agile mode. Fill archive fields when used.
+  archive_url: null
+  archive_sha256: null
+  signature_url: null
+  signer_fingerprint: null
+  provenance_note: null
+  cache_key: "project-commit"
+  verification_receipt: ".fvh-provenance.yml"
+  acquisition_commands:
+    powershell:
+      - "Write-Error 'Replace with deterministic acquisition commands for this host'"
+    # The unused host path may be omitted or left empty.
+    posix: []
+  scope_inventory:
+    # Hash is optional when the materialized checkout is verified at project.commit.
+    - path: "src/component.c"
+      sha256: null
+target:
+  component: "bounded component"
+  production_boundary: "Name the production entry points and state covered by claims."
+  included_files:
+    - "src/component.c"
+  readable_dependencies: []
+  excluded_claims: []
+  safety_rationale: "Briefly explain why the target is tractable and replayable."
+properties:
+  - id: "valid-deref"
+    kind: "memory-safety"
+    statement: "Every production pointer dereference is valid within the declared boundary."
+tooling:
+  # Tools and commands are starting points, not frozen solver configuration.
+  formal:
+    name: "investigator_choice"
+    version_command: null
+    build_command: null
+    analyze_command: null
+    property_mapping: "Map final checks to the property identifiers in the result."
+  runtime:
+    oracle: "AddressSanitizer"
+    version_command: null
+    build_command: null
+    witness_command: null
+    control_command: null
+    checker_sanity_command: null
+agents:
+  model: "exact-model-id"
+  knowledge_cutoff: "YYYY-MM"
+  reasoning_effort: "exact-effort"
+  tool_environment: "Common local tool surface"
+  framing: "positive_restricted_vs_neutral_open"
+network:
+  # Coordinator-only policy. The rendered baseline exposes per_prompt instead.
+  policy: "asymmetric"
+  audit_required: true
+  arm_policies:
+    investigator_a: "target_restricted_audited"
+    investigator_b: "open_unmonitored"
+  forbidden_sources:
+    - "sibling branches, worktrees, prompts, reviews, and results"
+repository:
+  destination: "C:/absolute/path/to/new-harness"
+  setup_shell: "powershell"
+  remote_policy: "local_only"
+  remote_url: null
+  source_policy: "exact_commit"
+  push_lock_required: false
+baseline_files: []

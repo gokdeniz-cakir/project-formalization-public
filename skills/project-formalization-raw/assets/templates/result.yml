@@ -1,0 +1,58 @@
+schema_version: "1.1"
+investigator: "a"
+baseline_commit: "0000000000000000000000000000000000000000"
+snapshot_digest: null
+verdict: "unknown"
+cause_assessment: "unknown"
+claim_scope: "Concise statement of what was or was not established."
+formal:
+  status: "unknown"
+  tool: null
+  version: null
+  commands: []
+  exit_codes: []
+  property_ids: []
+  logs: []
+  trace: null
+  production_units: []
+  models: []
+  stubs: []
+  assumptions: []
+  bounds: null
+  unwinding: null
+  completeness_declared: false
+replay:
+  status: "not_attempted"
+  fresh_unmodified_build: false
+  pin_check: false
+  build_command: null
+  linkage_evidence: null
+  source_hashes: {}
+  witness:
+    command: null
+    successful_runs: 0
+    oracle_output: null
+  negative_controls: []
+  checker_sanity:
+    command: null
+    passed: false
+    evidence: null
+mechanism:
+  kind: null
+  complete: false
+  rationale: null
+  events: []
+limitations:
+  - "State the decisive limitation or why the result is inconclusive."
+residuals: []
+independence:
+  no_sibling_access: true
+  forbidden_source_access: false
+  isolation_status: "clean"
+  declaration: "I did not inspect sibling workspaces, prompts, reviews, or results."
+  incidents: []
+  # Include relevant_network_accesses only when network.audit_required is true.
+artifacts: []
+# Unknown results may list a raw artifact without a hash. Positive claims must hash cited artifacts.
+# - path: "artifacts/formal.log"
+#   sha256: null

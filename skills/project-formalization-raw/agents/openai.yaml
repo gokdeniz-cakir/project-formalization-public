@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Formalization Raw"
+  short_description: "Run independent vulnerability experiments"
+  default_prompt: "Use $project-formalization-raw to set up and oversee an independent vulnerability experiment for this open-source project."

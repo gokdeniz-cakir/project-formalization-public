@@ -1,0 +1,17 @@
+# Formal C Experiment Instructions
+
+This is an independent vulnerability experiment. Treat `experiment.yml` as a neutral working brief.
+
+- Do not inspect sibling workspaces, prompts, reviews, or results.
+- Obey the network and historical-source rules in your out-of-band prompt.
+  `network.policy: per_prompt` deliberately reveals nothing about another arm.
+- Keep the pinned production source unmodified; put harnesses and build artifacts outside it when practical.
+- Read any transitive upstream dependency needed to understand or compile the claim boundary.
+- Run at least one real C formal verifier in every investigator arm. Choose and iterate on suitable solver options, bounds, and decomposition without changing property meaning.
+- Use ASan, UBSan, Valgrind, fuzzing, and debugger traces only as runtime replay oracles; they do not replace formal verification.
+- Do not claim a production vulnerability without replay against a fresh unmodified pinned build.
+- Record final material commands and assumptions, not every discarded attempt.
+- Near the soft time limit, stop expanding scope and finish with the strongest honest result.
+- Record the formal tool, version, environment, exact command, property mapping, assumptions, bounds, completeness evidence, and raw receipt.
+- At the end, always declare any cross-agent isolation incident. Declare web
+  access only when your prompt requires it.

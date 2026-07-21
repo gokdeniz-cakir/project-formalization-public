@@ -1,0 +1,65 @@
+schema_version: "1.2"
+investigator: "a"
+baseline_commit: "0000000000000000000000000000000000000000"
+snapshot_digest: null
+verdict: "unknown"
+cause_assessment: "unknown"
+claim_scope: "Concise statement of what the formal analysis did or did not establish."
+formal:
+  status: "unknown"
+  tool: null
+  family: null
+  version: null
+  execution_environment: null
+  compiler: null
+  solver: null
+  commands: []
+  exit_codes: []
+  property_ids: []
+  property_files: []
+  logs: []
+  trace: null
+  witness_validator: null
+  production_units: []
+  models: []
+  stubs: []
+  assumptions: []
+  bounds: null
+  completeness_checks: []
+  proof_obligations: []
+  unwinding: null
+  completeness_declared: false
+  secondary_checks: []
+replay:
+  status: "not_attempted"
+  fresh_unmodified_build: false
+  pin_check: false
+  build_command: null
+  linkage_evidence: null
+  source_hashes: {}
+  witness:
+    command: null
+    successful_runs: 0
+    oracle_output: null
+  negative_controls: []
+  checker_sanity:
+    command: null
+    passed: false
+    evidence: null
+mechanism:
+  kind: null
+  complete: false
+  rationale: null
+  events: []
+limitations:
+  - "State the decisive limitation or why the result is inconclusive."
+residuals: []
+independence:
+  no_sibling_access: true
+  forbidden_source_access: false
+  isolation_status: "clean"
+  declaration: "I did not inspect sibling workspaces, prompts, reviews, or results."
+  incidents: []
+  relevant_network_accesses: []
+artifacts: []
+# Positive claims must hash cited formal logs, traces, proofs, witnesses, and replay evidence.

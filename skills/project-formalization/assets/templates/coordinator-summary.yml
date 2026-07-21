@@ -1,0 +1,33 @@
+schema_version: "1.2"
+experiment_id: "replace"
+baseline_commit: "replace"
+results:
+  investigator_a: "replace with final commit or snapshot"
+  investigator_b: "replace with final commit or snapshot"
+prompts:
+  investigator_a_sha256: "replace"
+  investigator_b_sha256: "replace"
+review:
+  critic_used: false
+  material_findings: []
+comparison:
+  converged: false
+  mechanism: null
+  formal_backend_agreement: false
+  property_agreement: false
+  disagreements: []
+external_audit:
+  started_after_both_finished: false
+  classification: "not_started"
+  material_sources: []
+severity:
+  demonstrated_impact: null
+  reachability: null
+  attacker_control: null
+  primitive: null
+  reliability: null
+  affected_configurations: null
+disclosure:
+  contacted_anyone: false
+  published: false
+  pushed_confidential_results: false

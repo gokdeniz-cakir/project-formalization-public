@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Formalization"
+  short_description: "Verify C safety properties with formal tools"
+  default_prompt: "Use $project-formalization to formally verify C safety properties and replay counterexamples against pinned production code."

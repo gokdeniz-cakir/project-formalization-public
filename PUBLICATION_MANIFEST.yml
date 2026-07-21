@@ -19,3 +19,10 @@ site:
   path: "site"
   deployment: "Cloudflare Workers static assets"
   remote_state_committed: false
+skills:
+  - name: "project-formalization"
+    path: "skills/project-formalization"
+    scope: "C-focused formal verification and production replay"
+  - name: "project-formalization-raw"
+    path: "skills/project-formalization-raw"
+    scope: "general-purpose vulnerability experiment harness"

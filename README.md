@@ -16,6 +16,13 @@ route, custom-domain binding, account identifier, or deployment state.
 | [CVE-2026-6679](cases/wolfssl/CVE-2026-6679/) | wolfSSL 5.9.0 | Coordinator-owned evidence, a bounded arithmetic model, and the V3 lab. |
 | [CVE-2026-5460](cases/wolfssl/CVE-2026-5460/) | wolfSSL TLS 1.3 PQC | A public-source correspondence note for the CVE-2026-5460 / CVE-2026-7531 family. |
 
+## Skills
+
+The two reusable harness skills live in [`skills/`](skills/):
+[`project-formalization`](skills/project-formalization/) is C and formal-methods
+focused, while [`project-formalization-raw`](skills/project-formalization-raw/)
+is the general-purpose, method-agnostic version.
+
 ## Publication boundary
 
 This repository contains only material whose underlying issue is already

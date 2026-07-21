@@ -1,0 +1,12 @@
+# {{PROJECT}} vulnerability experiment
+
+This local repository is a neutral baseline for investigating a bounded production component without disclosing an expected verdict or known vulnerability mechanism.
+
+- Project: `{{PROJECT}}`
+- Version: `{{VERSION}}`
+- Commit: `{{COMMIT}}`
+- Component: `{{COMPONENT}}`
+
+`experiment.yml` records the initial claim boundary, safety properties, source pin, common agent configuration, and leakage rules. Tool choices, solver settings, dependency closure, bounds, and replay commands may evolve during investigation.
+
+Upstream source is materialized separately and remains untracked. A confirmed production violation requires a convincing analysis trace and successful replay against a fresh unmodified pinned build with a useful negative control and checker-sanity test. Inconclusive work may be reported concisely as `unknown`.
