@@ -59,22 +59,11 @@ explicitly allowlisted.
 
 ## Local development
 
-Install the pinned Wrangler version, then run the static site locally:
-
-```powershell
-npm install
-npm run dev
-```
-
 For a dependency-free preview of the site alone:
 
 ```powershell
 python -m http.server 8787 --directory site
 ```
-
-The Cloudflare project is deliberately not deployed by this repository setup.
-When you are ready to publish, attach the desired custom domain in Cloudflare
-and deploy from a reviewed commit using your normal release process.
 
 ## Method
 
