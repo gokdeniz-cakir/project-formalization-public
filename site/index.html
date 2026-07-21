@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An interactive, evidence-led demonstration of Project Formalization.">
+  <title>Project Formalization V3 | Counterexample Lab</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" as="image" href="assets/dtls-ack-trace-field-v3.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#lab" aria-label="Project Formalization home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i></span>
+      <span>Project Formalization</span>
+      <small>V3</small>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#lab">Lab</a>
+      <a href="#evidence">Evidence</a>
+      <a href="#workflow">Workflow</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="lab-section" id="lab" aria-labelledby="page-title">
+      <img class="lab-evidence-field" src="assets/dtls-ack-trace-field-v3.png" width="3840" height="1440" alt="" aria-hidden="true" fetchpriority="high" decoding="async">
+      <div class="lab-heading">
+        <div>
+          <p class="section-label">Counterexample Lab / Public case study</p>
+          <h1 id="page-title">Project Formalization</h1>
+          <p class="lede">Change one boundary. Watch a machine-checked safety claim become a production violation.</p>
+        </div>
+        <div class="case-meta" aria-label="Case study details">
+          <span>wolfSSL 5.9.0</span>
+          <span>DTLS 1.3</span>
+          <span>CVE-2026-6679</span>
+        </div>
+      </div>
+
+      <div class="lab-bench" aria-label="Interactive DTLS ACK serialization experiment">
+        <div class="control-rail">
+          <div class="control-title">
+            <span>Pending ACK records</span>
+            <output id="countOutput" for="recordCount">4,095</output>
+          </div>
+          <input id="recordCount" type="range" min="0" max="4102" value="4095" step="1" aria-describedby="boundaryHint">
+          <div class="range-labels" aria-hidden="true"><span>0</span><span>4,096 boundary</span><span>4,102</span></div>
+          <p id="boundaryHint" class="control-note">The list remains representable through 4,095 entries.</p>
+          <div class="preset-group" aria-label="Boundary presets">
+            <button class="preset is-selected" type="button" data-count="4095">4,095 control</button>
+            <button class="preset" type="button" data-count="4096">4,096 witness</button>
+          </div>
+          <button class="run-button" id="runExperiment" type="button">
+            <span class="run-icon" aria-hidden="true"></span>
+            <span>Run verification</span>
+          </button>
+        </div>
+
+        <div class="visual-stage" id="visualStage" data-verdict="idle">
+          <div class="stage-topline">
+            <span>Serialization contract</span>
+            <span class="status-badge" id="stageStatus">Ready</span>
+          </div>
+
+          <div class="equation" aria-live="polite">
+            <div>
+              <span class="equation-label">Actual body</span>
+              <strong><span id="equationCount">4,095</span> x 16 = <span id="actualBytes">65,520</span> B</strong>
+            </div>
+            <span class="narrow-arrow" aria-hidden="true">to uint16</span>
+            <div>
+              <span class="equation-label">Reserved body</span>
+              <strong id="encodedBytes">65,520 B</strong>
+            </div>
+          </div>
+
+          <div class="memory-visual" aria-label="Comparison of reserved capacity and bytes written">
+            <div class="memory-row">
+              <div class="memory-label"><span>Capacity reserved</span><b id="capacityLabel">65,520 B</b></div>
+              <div class="memory-track capacity-track"><span id="capacityFill"></span></div>
+            </div>
+            <div class="memory-row">
+              <div class="memory-label"><span>Writer traversal</span><b id="writerLabel">65,520 B</b></div>
+              <div class="memory-track writer-track">
+                <span id="writerFill"></span>
+                <i id="overflowMarker">out of bounds</i>
+              </div>
+            </div>
+          </div>
+
+          <div class="trace-strip" id="traceStrip" aria-hidden="true"></div>
+
+          <div class="console" aria-live="polite" aria-label="Verification output">
+
+            <ol id="consoleLines">
+              <li>Harness ready. Select a boundary and run verification.</li>
+            </ol>
+          </div>
+        </div>
+
+        <aside class="evidence-rail" aria-label="Evidence ladder">
+          <div class="evidence-heading">
+            <span>Evidence ladder</span>
+            <b id="evidenceCount">0 / 5</b>
+          </div>
+          <ol id="evidenceList">
+            <li data-step="0"><i></i><div><b>Formal property</b><span>bytes_written &lt;= reserved</span></div></li>
+            <li data-step="1"><i></i><div><b>CBMC result</b><span>Awaiting bounded analysis</span></div></li>
+            <li data-step="2"><i></i><div><b>Negative control</b><span>4,095-entry comparison</span></div></li>
+            <li data-step="3"><i></i><div><b>Production replay</b><span>Fresh ASan build</span></div></li>
+            <li data-step="4"><i></i><div><b>Independent critic</b><span>Evidence not reviewed</span></div></li>
+          </ol>
+          <div class="verdict-block" id="verdictBlock">
+            <span>Verdict</span>
+            <strong>Not run</strong>
+            <p>Evidence is classified only after formal analysis, replay, control, and review.</p>
+          </div>
+        </aside>
+      </div>
+
+      <p class="scope-note"><b>Claim boundary:</b> production serialization overflow reproduced from reconstructed post-authentication state. A full encrypted live-peer transcript was not established.</p>
+    </section>
+
+    <section class="artifact-section" id="evidence" aria-labelledby="artifact-title">
+      <div class="artifact-copy">
+        <p class="section-label">Public evidence / Sealed result</p>
+        <h2 id="artifact-title">The visual story ends where the evidence begins.</h2>
+        <p>Every claim in the lab maps to preserved output from the pinned wolfSSL production build. Open either plate to inspect it at full resolution.</p>
+        <dl>
+          <div><dt>Source pin</dt><dd class="mono-inline">922d04b3</dd></div>
+          <div><dt>Formal property</dt><dd class="mono-inline">ack-write-capacity</dd></div>
+          <div><dt>Runtime oracle</dt><dd>AddressSanitizer</dd></div>
+        </dl>
+      </div>
+      <div class="artifact-gallery">
+        <a class="artifact artifact-mechanism" href="assets/wolfssl-mechanism-evidence-v2.png" target="_blank" rel="noreferrer">
+          <img src="assets/wolfssl-mechanism-evidence-v2.png" width="1200" height="760" alt="Evidence plate showing 65,536 bytes narrowing to zero in a 16-bit ACK body length." loading="lazy">
+          <span><b>Mechanism</b><em>Arithmetic and traversal contract</em></span>
+        </a>
+        <a class="artifact artifact-replay" href="assets/wolfssl-replay-evidence-v2.png" target="_blank" rel="noreferrer">
+          <img src="assets/wolfssl-replay-evidence-v2.png" width="1200" height="760" alt="Production replay plate comparing the clean 4,095 control with the 4,096 AddressSanitizer overflow." loading="lazy">
+          <span><b>Production replay</b><em>Control, witness, and critic</em></span>
+        </a>
+      </div>
+    </section>
+
+    <section class="workflow-section" id="workflow" aria-labelledby="workflow-title">
+      <div class="workflow-intro">
+        <p class="section-label">Five agents / One sealed protocol</p>
+        <h2 id="workflow-title">Independence is part of the evidence.</h2>
+        <p>The coordinator freezes one target and two framings. Investigators work in isolation; critics attack each result only after it is sealed.</p>
+        <button class="workflow-play" id="playWorkflow" type="button">
+          <span class="run-icon" aria-hidden="true"></span>
+          <span>Play workflow</span>
+        </button>
+      </div>
+
+      <div class="workflow-shell">
+        <div class="workflow-topline">
+          <span id="phaseLabel">Protocol ready</span>
+          <span id="phaseCount">0 / 5</span>
+        </div>
+
+        <div class="workflow-canvas" id="workflowCanvas" data-phase="0">
+          <img class="workflow-organism" src="assets/coordinator-neural-octopus-v3.png" width="3840" height="2160" alt="" aria-hidden="true">
+          <svg class="connectors" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
+            <path data-path="review-a" d="M500 72 C410 142 225 192 125 358"></path>
+            <path data-path="dispatch-a" d="M500 72 C448 166 382 244 352 382"></path>
+            <path data-path="dispatch-b" d="M500 72 C552 166 618 244 648 382"></path>
+            <path data-path="review-b" d="M500 72 C590 142 775 192 867 358"></path>
+            <path data-path="synthesis" d="M500 74 C492 218 508 390 500 530"></path>
+          </svg>
+
+          <article class="agent coordinator-agent" data-agent="coordinator">
+            <div class="agent-token"><span>CO</span><i></i></div>
+            <div><b>Coordinator</b><span>Freeze target and properties</span></div>
+          </article>
+
+          <article class="agent investigator-a" data-agent="investigator-a">
+            <div class="agent-token"><span>A1</span><i></i></div>
+            <div><b>Investigator 1</b><span>Find the suspected violation</span></div>
+          </article>
+
+          <article class="agent investigator-b" data-agent="investigator-b">
+            <div class="agent-token"><span>A2</span><i></i></div>
+            <div><b>Investigator 2</b><span>Verify the safety properties</span></div>
+          </article>
+
+          <div class="isolation-seal"><span>sealed isolation</span></div>
+
+          <article class="agent critic-a" data-agent="critic-a">
+            <div class="agent-token"><span>C1</span><i></i></div>
+            <div><b>Hostile critic 1</b><span>Challenge witness and replay</span></div>
+          </article>
+
+          <article class="agent critic-b" data-agent="critic-b">
+            <div class="agent-token"><span>C2</span><i></i></div>
+            <div><b>Hostile critic 2</b><span>Search for modeling gaps</span></div>
+          </article>
+
+          <article class="synthesis" data-agent="synthesis">
+            <span>Final classification</span>
+            <strong>Compare evidence, not confidence.</strong>
+          </article>
+        </div>
+
+        <div class="workflow-log" aria-live="polite">
+          <span class="log-time" id="workflowTime">00:00</span>
+          <p id="workflowMessage">The protocol begins with an unset verdict.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="method-section" id="method" aria-labelledby="method-title">
+      <div>
+        <p class="section-label">Evidence before claims</p>
+        <h2 id="method-title">A counterexample is only the beginning.</h2>
+      </div>
+      <ol class="method-list">
+        <li><span>01</span><b>Pin</b><p>Hash the exact production source and freeze the property.</p></li>
+        <li><span>02</span><b>Verify</b><p>Run a real formal backend with explicit bounds and assumptions.</p></li>
+        <li><span>03</span><b>Replay</b><p>Reproduce against a fresh build with a useful negative control.</p></li>
+        <li><span>04</span><b>Challenge</b><p>Make an independent critic try to break the claim.</p></li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand" href="#lab"><span class="brand-mark" aria-hidden="true"><i></i><i></i></span><span>Project Formalization</span><small>V3</small></a>
+    <p>Formal methods, frontier agents, reproducible evidence.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

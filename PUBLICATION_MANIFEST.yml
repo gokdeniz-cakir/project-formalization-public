@@ -1,0 +1,21 @@
+schema_version: "1.0"
+repository_scope: "already-public vulnerability case studies only"
+allowed_cves:
+  - "CVE-2026-10536"
+  - "CVE-2026-6679"
+  - "CVE-2026-5460"
+  - "CVE-2026-7531"
+published_cases:
+  - id: "CVE-2026-10536"
+    path: "cases/curl/CVE-2026-10536"
+    evidence: "public API replay and control"
+  - id: "CVE-2026-6679"
+    path: "cases/wolfssl/CVE-2026-6679"
+    evidence: "coordinator-owned report and bounded model"
+  - id: "CVE-2026-5460"
+    path: "cases/wolfssl/CVE-2026-5460"
+    evidence: "public-source correspondence note"
+site:
+  path: "site"
+  deployment: "Cloudflare Workers static assets"
+  remote_state_committed: false
