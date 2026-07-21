@@ -17,8 +17,11 @@ published_cases:
     evidence: "public-source correspondence note"
 site:
   path: "site"
-  deployment: "Cloudflare Workers static assets"
-  remote_state_committed: false
+  deployment: "Cloudflare-hosted static pages at gokdenizcakir.com"
+  remote_state_committed: true
+  project_url: "https://gokdenizcakir.com/project-formalization"
+  demo_url: "https://gokdenizcakir.com/demo/"
+  replay_url: "https://gokdenizcakir.com/replays/"
 skills:
   - name: "project-formalization"
     path: "skills/project-formalization"
