@@ -3,6 +3,7 @@
 [![Public repository audit](https://github.com/gokdeniz-cakir/project-formalization-public/actions/workflows/public-audit.yml/badge.svg)](https://github.com/gokdeniz-cakir/project-formalization-public/actions/workflows/public-audit.yml)
 [![License](https://img.shields.io/badge/license-Apache--2.0-54d5aa.svg)](LICENSE)
 
+![Project Formalization](site/assets/project-formalization-hackathon-cover.png)
 Project Formalization combines bounded formal methods, production replays, and
 independent review to find and validate software safety failures. This public
 repository contains the reusable Codex skills, judge-facing sample cases, and
